@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Poisson Table </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+
+
+  <style>
+    body { max-width: 450px; }
+    #sample { overflow-x: auto; }
+    table { border-collapse: collapse; }
+    th { color: purple; padding: 6px 6px; }
+    td {
+        border: 2px solid red;
+        text-align: center;
+        padding: 6px 6px;
+        position: relative;
+    }
+    td:hover .tip {
+        visibility: visible;
+    }
+    td .tip {
+        visibility: hidden;
+        font-size: small;
+        background-color: black;
+        color: white;
+        padding: 6px 6px;
+        position: absolute;
+        left: 6px;
+        top: 21px;
+        text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+<center>
+<h2 id=title></h2>
+
+
+
+<table id="tablo"></table>
+
+<p id=out style="font-size:small"></p>
+
+<form oninput="tableFromInput()">
+
+</form>
+</center>
+
+<hr />
+<b>Sample code</b>
+<pre id=sample></pre>
+<hr />
+
+<script>
+"use strict";
+
+function makeRows(m, n) {
+    let row = "<th></th>";
+    for (let j = 0.5; j <= 3; j+=0.5)
+        row += "<th>"+"λ=" +j+"</th>";
+    let text = "<tr>"+row+"</tr>";
+
+    for (let i = 0; i <= m; i++) {
+       row = "<th>"+"x="+i+"</th>";
+
+       for (let j = 1; j <= n; j++) {
+         let p =poissonformul(i,(j/2));
+         row += "<td>"+ p.toFixed(4) +"</td>";
+       }
+       text += "<tr>"+row+"</tr>";
+    }
+
+console.log("makeRows: "+m+"x"+n);
+    tablo.innerHTML = text;
+
+}
+function tableFromMenu() {
+    let [m, n] = size.value.split("x");
+    makeRows(m, n);
+    rows.value = m;
+    cols.value = n;
+}
+function tableFromInput() {
+    let m = rows.value;
+    let n = cols.value;
+    makeRows(m, n);
+    size.value = m+"x"+n;
+}
+    title.innerText = document.title;
+    sample.innerText = makeRows.toString();
+    makeRows(8, 6);
+
+
+function poissonformul(x,lamda){
+
+     let e=2.718281;
+     let exponentialPower = Math.pow(+e, -(+lamda));
+     let lamdaPower = Math.pow(lamda, x);
+     let multiplication = exponentialPower * lamdaPower;
+     let division = fact(x);
+
+         return (multiplication / division);
+
+}
+function fact(y) {
+   if(y==0) {
+      return 1;
+   }
+   return y * fact(y-1);
+}
+
+</script>
+
+</body>
+</html>
