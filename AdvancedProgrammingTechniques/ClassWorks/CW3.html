@@ -1,1 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-US">
 
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>List of Objects </title>
+
+  <style>
+    body {
+      max-width: 500px;
+    }
+
+    #inp {
+      white-space: pre-wrap;
+    }
+
+    #sample {
+      overflow-x: auto;
+    }
+
+    #out {
+      color: blue;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2 id="title">List of Objects</h2>
+  <b>Text input  
+    <input type="button" id="convert" value="Convert" onclick="didConvertTapped()">
+  </b>
+  <p>
+    <textarea id="inp" onchange="convert.disabled=false" rows="10" cols="50">  </textarea>
+  </p>
+  <b>JSON output</b>
+  <pre
+    id="out">ALL AUCTIONS:<br>[<br>  {<br>    "Customer ID Company Name Contact Name Contact Title Address City Region Postal Code Country Phone Fax": "ALFKI Alfreds Futterkiste Maria Anders Sales Representative Obere Str. 57 Berlin 12209 Germany 030-0074321 030-0076545"<br>  },<br>  {<br>    "Customer ID Company Name Contact Name Contact Title Address City Region Postal Code Country Phone Fax": "ANATR Ana Trujillo Emparedados y helados Ana Trujillo Owner Avda. de la Constitución 2222 México D.F. 05021 Mexico (5) 555-4729 (5) 555-3745"<br>  },<br>  {<br>    "Customer ID Company Name Contact Name Contact Title Address City Region Postal Code Country Phone Fax": "ANTON Antonio Moreno Taquería Antonio Moreno Owner Mataderos 2312 México D.F. 05023 Mexico (5) 555-3932 "<br>  },<br>  {<br>    "Customer ID Company Name Contact Name Contact Title Address City Region Postal Code Country Phone Fax": "AROUT Around the Horn Thomas Hardy Sales Representative 120 Hanover Sq. London WA1 1DP UK (171) 555-7788 (171) 555-6750"<br>  },<br>  {<br>    "Customer ID Company Name Contact Name Contact Title Address City Region Postal Code Country Phone Fax": "BERGS Berglunds snabbköp Christina Berglund Order Administrator Berguvsvägen 8 Luleå S-958 22 Sweden 0921-12 34 65 0921-12 34 67"<br>  }<br>]<br><br><br></pre>
+  <hr>
+  <b>Sample code</b>
+  <pre
+    id="sample">function splitText(str) {<br>    // This functions splits the lines <br>    //and returns as array of strings in the given string.<br>    let lines = str.split('\n');<br>    return lines;<br>}<br>function getKeys(line) {<br>    // This function splits the key values <br>    //according to split operator and return these keys.<br>    return line.split('\t');<br>}<br>function getValues(lines) {<br>    // This function splits the values <br>    //for every object and returns the values as an array.<br>    let values = [];<br>    <br>    for(let i = 1; i &lt; lines.length; i++) {<br>        values.push(lines[i].split('\t'));<br>    }<br>    <br>    return values;<br>}<br>function mapObjects(str) {<br>    //This functions gets the keys and values.<br>    //Then Maps every objects with the keys.<br>    let lines = splitText(str)<br>    let keys = getKeys(lines[0]);<br>    let values = getValues(lines);<br>    let objectsMap = [];<br>    <br>    for(let value of values) {<br>        let object = new Map();<br>        let index = 0;<br>        <br>        for(let data of value) {    <br>            object[keys[index]] = data;<br>            index++;<br>        }<br>        <br>        objectsMap.push(object);<br>    }<br>    <br>    return objectsMap;<br>}<br>function didConvertTapped() {<br>    // When Convert Button tapped, this functions is called.<br>    let objects = mapObjects(inp.value);<br>    let filteredObjects = filterObjects(objects);<br>    <br>    out.innerText = "ALL AUCTIONS:\n" + <br>                    JSON.stringify(objects, '', 2);<br>    <br>                      + " WAS AUCTIONEER:\n" +<br>                    JSON.stringify(filteredObjects, '', 2);<br>}</pre>
+  <hr>
+  <p>
+  </p>
+
+  <script>
+    "use strict";
+
+
+    function didConvertTapped() {
+      
+      let objects = mapObjects(inp.value);
+      let filteredObjects = filterObjects(objects);
+
+      out.innerText = "ALL AUCTIONS:\n" +
+        JSON.stringify(objects, '', 2);
+
+      out.innerText +=
+        JSON.stringify(filteredObjects, '', 2);
+    }
+
+    function splitText(str) {
+      let lines = str.split('\n');
+      return lines;
+    }
+
+    function getKeys(line) {
+      return line.split('\t');
+    }
+
+    function getValues(lines) {
+      let values = [];
+
+      for (let i = 1; i < lines.length; i++) {
+        values.push(lines[i].split('\t'));
+      }
+
+      return values;
+    }
+
+    function mapObjects(str) {
+      let lines = splitText(str)
+      let keys = getKeys(lines[0]);
+      let values = getValues(lines);
+      let objectsMap = [];
+
+      for (let value of values) {
+        let object = new Map();
+        let index = 0;
+
+        for (let data of value) {
+          object[keys[index]] = data;
+          index++;
+        }
+
+        objectsMap.push(object);
+      }
+
+      return objectsMap;
+    }
+
+    function filterObjects(objects) {
+      return objects.filter(auction =>
+        auction["Auctioneer"] == "Gooding & Company");
+    }
+
+    const
+
+      MOUNT = `mountain	height	place
+Kilimanjaro	5895	Tanzania
+Everest 	8848	Nepal
+Mount Fuji	3776	Japan
+Vaalserberg	323	Netherlands
+Denali  	6168	United States
+Popocatepetl	5465	Mexico
+Mont Blanc	4808	Italy/France`
+
+    title.innerText = document.title
+    sample.innerText = splitText + "\n" + getKeys + "\n" + getValues + "\n" + mapObjects + "\n" + didConvertTapped;
+    inp.value = AUCTIONS
+
+  </script>
+
+
+
+</body>
+
+</html>
