@@ -1,118 +1,83 @@
 <!DOCTYPE html>
+<!-- saved from url=(0088)https://serhat-yurdakul.github.io/AdvancedProgrammingTechniques/Homewroks/homework1.html -->
 <html>
+
 <head>
-    <title>Poisson Table </title>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Multiplication Table </title>
+
     <meta name="viewport" content="width=device-width">
 
 
-  <style>
-    body { max-width: 450px; }
-    #sample { overflow-x: auto; }
-    table { border-collapse: collapse; }
-    th { color: purple; padding: 6px 6px; }
-    td {
-        border: 2px solid red;
-        text-align: center;
-        padding: 6px 6px;
-        position: relative;
-    }
-    td:hover .tip {
-        visibility: visible;
-    }
-    td .tip {
-        visibility: hidden;
-        font-size: small;
-        background-color: black;
-        color: white;
-        padding: 6px 6px;
-        position: absolute;
-        left: 6px;
-        top: 21px;
-        text-align: center;
-    }
-  </style>
+    <style>
+        body {
+            max-width: 400px;
+        }
+    </style>
 </head>
 
 <body>
-<center>
-<h2 id=title></h2>
+    <center>
+        <h2 id="title">Multiplication Table</h2>
 
 
 
-<table id="tablo"></table>
+        <script>
+            "use strict";
 
-<p id=out style="font-size:small"></p>
-
-<form oninput="tableFromInput()">
-
-</form>
-</center>
-
-<hr />
-<b>Sample code</b>
-<pre id=sample></pre>
-<hr />
-
-<script>
-"use strict";
-
-function makeRows(m, n) {
-    let row = "<th></th>";
-    for (let j = 0.5; j <= 3; j+=0.5)
-        row += "<th>"+"λ=" +j+"</th>";
-    let text = "<tr>"+row+"</tr>";
-
-    for (let i = 0; i <= m; i++) {
-       row = "<th>"+"x="+i+"</th>";
-
-       for (let j = 1; j <= n; j++) {
-         let p =poissonformul(i,(j/2));
-         row += "<td>"+ p.toFixed(4) +"</td>";
-       }
-       text += "<tr>"+row+"</tr>";
-    }
-
-console.log("makeRows: "+m+"x"+n);
-    tablo.innerHTML = text;
-
-}
-function tableFromMenu() {
-    let [m, n] = size.value.split("x");
-    makeRows(m, n);
-    rows.value = m;
-    cols.value = n;
-}
-function tableFromInput() {
-    let m = rows.value;
-    let n = cols.value;
-    makeRows(m, n);
-    size.value = m+"x"+n;
-}
-    title.innerText = document.title;
-    sample.innerText = makeRows.toString();
-    makeRows(8, 6);
+            var color_td;
+            document.write("<table border='1px'>");
 
 
-function poissonformul(x,lamda){
+            for (var i = 1; i < 11; i++) {
 
-     let e=2.718281;
-     let exponentialPower = Math.pow(+e, -(+lamda));
-     let lamdaPower = Math.pow(lamda, x);
-     let multiplication = exponentialPower * lamdaPower;
-     let division = fact(x);
+                document.write("<tr style='height:30px;'>");
 
-         return (multiplication / division);
+                for (var j = 1; j < 11; j++) {
 
-}
-function fact(y) {
-   if(y==0) {
-      return 1;
-   }
-   return y * fact(y-1);
-}
+                    if (j == 1 || i == 1) {
+                        color_td = "#ccc";
+                    }
+                    else {
+                        color_td = "#fff";
+                    }
 
-</script>
+                    document.write("<td style='width:30px;background-color:" + color_td + "'>" + i * j + "</td>");
+                }
+                document.write("</tr>");
+            }
 
+            document.write("</table>");
+
+        </script>
+
+        <p id="out" style="font-size:small"></p>
+
+        <form oninput="tableFromInput()">
+
+        </form>
+    </center>
+
+    <p>
+    <h3>Sample Code</h3>
+
+    for (var i = 1; i < 11; i++) { document.write("<tr style='height:30px;'>");<br>
+
+        for (var j = 1; j < 11; j++) { if (j==1 || i==1) { color_td="#ccc" ; } else color_td="#fff" ; <br>
+            document.write("<td style='width:30px;background-color:" 
+            + color_td + "'>" + i * j + "</td>");
+            } <br>
+            document.write("</tr>");
+            } <br>
+
+            document.write("</table>"); <br>
+
+            </p>
+            <h3>Original Table</h3>
+            <img src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX28239021.jpg" alt="Table" width="500"
+                height="600">
+                <h3>Ref: <a href="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX28239021.jpg">Ref</a> </h3>
+                <h3>Ref: <a href="https://serhat-yurdakul.github.io/AdvancedProgrammingTechniques/">Serhat Yurdakul Github.io</a> </h3>
 </body>
+
 </html>
