@@ -1,1 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <p>
+        function range(start, end, step) { <br>
+            if (!step) { step = 1; }    <br>
+            var rangeArray = [];    <br>
+            for (var i = start; start <= end ? i <= end : i >= end; i += step)  <br>
+            {rangeArray . push(i); }    <br>
+            return rangeArray;  <br>
+            <br>
+            function sum(rangeArray) {  <br>
+            var s = 0;  <br>
+            
+            for (var i = 0; i < rangeArray. length; it+) { s += rangeArray[i];} <br>
+            <br>
+            return s;<br>
+            
+            
+             console. log(sum(range(10, 1, -2)));<br>
+            
+    </p>
+</head>
+
+<body>
+    <script>
+        function range(start, end, step) {
+            if (!step) { step = 1; }
+            var rangeArray = [];
+            for (var i = start; start <= end ? i <= end : i >= end; i += step) { rangeArray.push(i); }
+            return rangeArray;
+        }
+        function sum(rangeArray) {
+            var s = 0;
+
+            for (var i = 0; i < rangeArray.length; i++) { s += rangeArray[i]; }
+
+            return s;
+        }
+
+        console.log(sum(range(10, 1, -2)));
+
+    </script>
+</body>
+
+</html>
