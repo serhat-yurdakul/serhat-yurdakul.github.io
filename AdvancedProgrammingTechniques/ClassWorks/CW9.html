@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!-- saved from url=(0088)https://serhat-yurdakul.github.io/AdvancedProgrammingTechniques/Homewroks/homework1.html -->
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Multiplication Table </title>
+
+    <meta name="viewport" content="width=device-width">
+
+
+    <style>
+        body {
+            max-width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h2 id="title">Multiplication Table</h2>
+
+
+
+        <script>
+            "use strict";
+
+            var color_td;
+            document.write("<table border='1px'>");
+
+
+            for (var i = 1; i < 11; i++) {
+
+                document.write("<tr style='height:30px;'>");
+
+                for (var j = 1; j < 11; j++) {
+
+                    if (j == 1 || i == 1) {
+                        color_td = "#ccc";
+                    }
+                    else {
+                        color_td = "#fff";
+                    }
+
+                    document.write("<td style='width:30px;background-color:" + color_td + "'>" + i * j + "</td>");
+                }
+                document.write("</tr>");
+            }
+
+            document.write("</table>");
+
+        </script>
+
+        <p id="out" style="font-size:small"></p>
+
+        <form oninput="tableFromInput()">
+
+        </form>
+    </center>
+
+    <p>
+    <h3>Sample Code</h3>
+
+    for (var i = 1; i < 11; i++) { document.write("<tr style='height:30px;'>");<br>
+
+        for (var j = 1; j < 11; j++) { if (j==1 || i==1) { color_td="#ccc" ; } else color_td="#fff" ; <br>
+            document.write("<td style='width:30px;background-color:" 
+            + color_td + "'>" + i * j + "</td>");
+            } <br>
+            document.write("</tr>");
+            } <br>
+
+            document.write("</table>"); <br>
+
+            </p>
+            <h3>Original Table</h3>
+            <img src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX28239021.jpg" alt="Table" width="500"
+                height="600">
+                <h3>Ref: <a href="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX28239021.jpg">Ref</a> </h3>
+                <h3>Ref: <a href="https://serhat-yurdakul.github.io/AdvancedProgrammingTechniques/">Serhat Yurdakul Github.io</a> </h3>
+</body>
+
+</html>
