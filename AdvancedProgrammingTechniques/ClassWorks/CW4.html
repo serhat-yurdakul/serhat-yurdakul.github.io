@@ -1,1 +1,144 @@
+<!DOCTYPE html>
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="https://blm305.github.io/2021/images/icon192.png">
+    <title>Inspector </title>
 
+    <style>
+        body { max-width: 600px; }
+    </style></head>
+
+<body>
+<p><b id="docName">Inspector V2.16</b> &nbsp;
+<a href="https://maeyler.github.io/JS/sss/">Read me</a> &nbsp;
+<a href="https://maeyler.github.io/JS/sss/Turkish">Turkish</a> &nbsp;
+<a href="https://blm305.github.io/2021/work/Objects">Objects</a>
+</p>
+<div id="sss"><table class="inspector">
+  <tbody><tr>
+    <th><button onclick="previous();hideTip(this)">◀
+    <span class="tip1">Display previous object</span></button>
+    &nbsp; Objects &nbsp;
+    <button onclick="removeIt(event.ctrlKey);hideTip(this)">✘
+    <span class="tip1">Delete current object<br>
+        (&lt;CTRL&gt; deletes all)</span></button>
+    </th>
+    <th><button id="menu" onclick="display(MENU);hideTip(this)">M
+    <span class="tip1">Display Menu</span></button>
+    &nbsp; Properties
+    </th>
+  </tr>
+  <tr>
+    <td rowspan="3"><ul id="list1" onclick="doClick(event, this)" tabindex="0" onkeydown="doKey(event)"><li><b>Menu</b> Menu</li><li><b>Menu</b> Chap4</li><li><b>Menu</b> Chap6</li><li><b>Menu</b> Quiz</li><li style="color: white; background: blue;"><b>Menu</b> Async</li></ul></td>
+    <td><ul id="list2" onclick="doClick(event, this)"><li class="cfirst">Async<span class="tip2">Async<br>Menu<br>Object</span></li><li>pre: <b>HTMLPreElement</b></li><li>img: <b>HTMLImageElement</b></li><li>navigator: <b>Navigator</b></li><li>clipboard: <b>Clipboard</b></li><li>geolocation: <b>Geoloca...</b></li><li>reader: <b>FileReader</b></li><li class="cname">Menu</li><li class="cname">Object</li></ul></td>
+  </tr>
+  <tr>
+    <th>Methods
+    <input id="sorted" type="checkbox" checked="true" onclick="display(_)">
+    <span id="small">sort</span>
+    </th>
+  </tr>
+  <tr>
+    <td><ul id="list3" onclick="doClick(event, this)"><li class="cfirst">Async<span class="tip2">Async<br>Menu<br>Object</span></li><li>displayBlob</li><li>displayImage</li><li>displayText</li><li>isTextFile</li><li class="cname">Menu</li><li>allKeysIn</li><li>allValuesOf</li><li>deepEqual</li><li>toString</li><li class="cname">Object</li></ul></td>
+  </tr>
+  <tr>
+    <td colspan="2"><input id="inp" onkeyup="doEnter(event)">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" id="out">[object Menu] Async — 6 properties and 8 methods</td>
+  </tr>
+</tbody></table></div>
+<p><input type="file" multiple="" onchange="fileSelect(this)"></p>  
+<pre id="disp1">const L=console.log, T=800, D=display;<br>Callback:<br>setTimeout(L, T, 'L is a callback', 'T='+T)<br>navigator.geolocation.getCurrentPosition(L)<br>Promise:<br>navigator.getBattery().then(L)<br>navigator.clipboard.readText().catch(L)<br>fetch('https://ipinfo.io/json').then(L)</pre> <img id="disp2" src="https://blm305.github.io/2021/work/Inspector.html">
+
+<link href="./Inspector_files/inspector.css" rel="stylesheet">
+<script src="./Inspector_files/inspector.js"></script>
+<script src="./Inspector_files/chap4.js"></script>
+<script src="./Inspector_files/chap6.js"></script>
+<script src="./Inspector_files/Quiz.js"></script>
+<script src="./Inspector_files/Async.js"></script>
+<script>
+"use strict";
+class Chap4 extends Menu {
+  constructor() {
+    super();
+    this.JOURNAL = JOURNAL;
+    this.EVENTS = EVENTS;
+  }
+  correlation(evt) { 
+    return phi(window.tableFor(evt)) 
+  }
+  analyze(val) {
+    return window.analyze(val)
+  }
+  tableFor(evt) {
+    return window.tableFor(evt)
+  }
+}
+
+var a, b, c, d, s;  //global variables
+const L=console.log, T=800, D=display;
+const TEXT = 
+`const L=console.log, T=800, D=display;
+Callback:
+setTimeout(L, T, 'L is a callback', 'T='+T)
+navigator.geolocation.getCurrentPosition(L)
+Promise:
+navigator.getBattery().then(L)
+navigator.clipboard.readText().catch(L)
+fetch('https://ipinfo.io/json').then(L)`
+function init() {
+    let len = 123, name = "Circle", pi = Math.PI
+    a = [len, name, pi]
+    c = {len, name, pi}
+    s = "len, name, pi"
+    d = new Date()
+    let m = {d, a, c, s, window}
+    //make m a Menu instance
+    Object.setPrototypeOf(m, Menu.prototype)
+    display(m); 
+    display(new Chap4());
+    display(new Chap6());
+    display(new Quiz());
+    MENU = new Async(disp1, disp2); //global
+    MENU.displayText(TEXT)
+    display(MENU); 
+}
+    docName.innerText = "Inspector "+VERSION;
+    try {
+        inspect(sss, init); //makes the table
+        inp.value = "new Date()";
+    } catch(e) {
+        reportError(e);
+    }
+</script>
+<script src="./Inspector_files/navbar.js"></script><nav id="navbar"><link href="./Inspector_files/navbar.css" rel="stylesheet">
+<ul>
+    <li class="JavaScript">JavaScript
+      <div class="menu">
+        <a href="https://maeyler.github.io/JS/" target="BLM305">JS Examples</a>
+        <a href="https://javascript.info/" target="BLM305">JS Tutorial</a>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Introduction" target="BLM305">MDN Web Docs</a>
+      </div>
+    </li>
+    <li class="Course">Course
+      <div class="menu">
+        <a href="https://blm305.github.io/2021/index.html">Home 🏠</a>
+        <a href="https://blm305.github.io/2021/Course_outline.html">Outline</a>
+        <a href="https://eloquentjavascript.net/" target="BLM305">Textbook</a>
+        <a href="https://github.com/BLM305/2021" target="BLM305">Repo 😺</a>
+      </div>
+    </li>
+    <li class="Work">Work
+      <div class="menu">
+        <a href="https://blm305.github.io/2021/work/First%20Week">First Week</a>
+        <a href="https://blm305.github.io/2021/work/Month_1">October</a>
+        <a href="https://blm305.github.io/2021/work/Month_2">November</a>
+      </div>
+    </li>
+</ul></nav>
+
+
+</body></html>
