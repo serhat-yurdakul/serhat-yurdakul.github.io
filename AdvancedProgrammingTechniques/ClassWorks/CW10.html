@@ -10,11 +10,11 @@
         body {
             max-width: 400px;
         }
-        
+
         #url {
             width: 190px;
         }
-        
+
         span,
         #url {
             color: blue;
@@ -26,7 +26,7 @@
 
     <pre>Battery Status</pre>
     <p>
-       <span id="chargeStatus"></span>
+        <span id="charge"></span>
 
     </p>
 
@@ -37,12 +37,12 @@
     </p>
     <pre>Online Status</pre>
     <p>
-       <span id="onlineStatu"></span>
+        <span id="onlineStatu"></span>
     </p>
 
-    <pre>Click Key</pre>
+    <pre>Pressed Key</pre>
     <p>
-         <span id="pressedKey"></span>
+        <span id="pressedKey"></span>
     </p>
 
     <b>Sample code</b>
@@ -56,8 +56,13 @@
         function init() {
 
 
-            navigator.getBattery().then(b =>
-                b.onchargingchange = () => document.getElementById("chargeStatus").innerText = (b.charging ? "Charging" : "Discharging")
+            navigator.getBattery().then(b => {
+                charge.innerText = (b.charging ? "Charging" : "Discharging")
+                b.onchargingchange = function () {
+                    charge.innerText = (b.charging ? "Charging" : "Discharging")
+                    console.log(b.charging)
+                }
+            }
             )
             navigator.getBattery().then(b => {
                 document.getElementById("levelStatus").innerText = b.level * 100 + "%"
