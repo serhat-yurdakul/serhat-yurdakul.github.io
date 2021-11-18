@@ -24,28 +24,28 @@
 
 <body>
 
-    <pre>Battery Status</pre>
+    <pre><h2>Battery Status</h2></pre>
     <p>
         <span id="charge"></span>
 
     </p>
 
-    <pre>Charging Level Status</pre>
+    <pre><h2>Charging Level Status</h2></pre>
     <p>
         <span id="levelStatus"></span>
 
     </p>
-    <pre>Online Status</pre>
+    <pre><h2>Online Status</h2></pre>
     <p>
-        <span id="onlineStatu"></span>
+        <span id="onlineStatus"></span>
     </p>
 
-    <pre>Pressed Key</pre>
+    <pre><h2>Pressed Key</h2></pre>
     <p>
         <span id="pressedKey"></span>
     </p>
 
-    <b>Sample code</b>
+    <b><h2>Sample code</h2></b>
     <pre id="sample">This text is not shown. Why?</pre>
 
     <hr />
@@ -69,10 +69,10 @@
                 console.log(b)
             })
 
-            onlineStatu.innerText = +navigator.onLine;
+            onlineStatus.innerText = +navigator.onLine;
 
-            ononline = (e) => onlineStatu.innerText = navigator.onLine
-            onoffline = (e) => onlineStatu.innerText = navigator.onLine
+            ononline = (e) => onlineStatus.innerText = navigator.onLine
+            onoffline = (e) => onlineStatus.innerText = navigator.onLine
             onkeydown = (e) => document.getElementById("pressedKey").innerText = e.key
         }
 
