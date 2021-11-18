@@ -1,22 +1,20 @@
-
 <!DOCTYPE html>
 <html lang="en-US">
 
 <head>
-    <meta name="viewport" content="width=device-width">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
     <title>Event Listener</title>
 
     <style>
         body {
             max-width: 400px;
-            
         }
-
+        
         #url {
             width: 190px;
         }
-
+        
         span,
         #url {
             color: blue;
@@ -26,70 +24,56 @@
 
 <body>
 
-
+    <pre>Battery Status</pre>
     <p>
-    <h3>Battery Status</h3> <br>
-    <span id="charging">
-
-    </span>
-    <p>
-
-        <span id="batteryLevel">
-
-        </span>
+       <span id="chargeStatus"></span>
 
     </p>
 
-    </p>
-
-
-
+    <pre>Charging Level Status</pre>
     <p>
-    <h3>Online Status</h3> <br>
-    <span id="onlineStatus"> </span>
-    </p>
+        <span id="levelStatus"></span>
 
+    </p>
+    <pre>Online Status</pre>
     <p>
-    <h2>Keyboard</h2> <br>
-    <span id="pressedKey">Keyboard </span>
+       <span id="onlineStatu"></span>
     </p>
 
+    <pre>Click Key</pre>
+    <p>
+         <span id="pressedKey"></span>
+    </p>
 
-
-    <hr />
-    <pre id=sample>This text is not shown. Why?</pre>
-    <b>
-        <h2>Sample code</h2>
-    </b>
-
+    <b>Sample code</b>
+    <pre id="sample">This text is not shown. Why?</pre>
 
     <hr />
 
     <script>
-        "use strict";
+        var sampleCode = document.getElementById("sampleCode")
+
         function init() {
-            navigator.getBattery().then(battery =>
 
-                battery.onchargingchange = () => document.querySelector("#charging").innerText
-                    = "Battery Charge Status :  "
-                    + (battery.charging ? "Charging" : "Don't Charging")
 
+            navigator.getBattery().then(b =>
+                b.onchargingchange = () => document.getElementById("chargeStatus").innerText = (b.charging ? "Charging" : "Discharging")
             )
-            navigator.getBattery().then(battery =>
-                battery.onlevelchange = () =>
-                    document.querySelector("#batteryLevel").innerText = 100 * battery.level + '%'
-            )
-            onlineStatus.innerText = " " + navigator.onLine;
+            navigator.getBattery().then(b => {
+                document.getElementById("levelStatus").innerText = b.level * 100 + "%"
+                console.log(b)
+            })
 
-            ononline = (e) => document.querySelector("#onlineStatus") = "= " + navigator.onLine
-            onoffline = (e) => document.querySelector("#onlineStatus") = "= " + navigator.onLine
-            onkeydown = (event) => document.querySelector("#pressedKey").innerText
-                = "Pressed Key: " + event.key
+            onlineStatu.innerText = +navigator.onLine;
 
+            ononline = (e) => onlineStatu.innerText = navigator.onLine
+            onoffline = (e) => onlineStatu.innerText = navigator.onLine
+            onkeydown = (e) => document.getElementById("pressedKey").innerText = e.key
         }
-        init();
 
-        document.querySelector("#sample").innerText = init + "\n";
+        init()
+
+        sample.innerText = init
     </script>
 
 </body>
