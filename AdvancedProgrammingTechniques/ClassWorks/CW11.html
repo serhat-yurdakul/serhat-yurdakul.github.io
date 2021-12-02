@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta name="viewport" content="width=device-width">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>GitHub Users</title>
+
+  <style>
+    body {
+      max-width: 400px;
+    }
+
+    img {
+      padding-right: 12px;
+      width: 250px;
+    }
+
+    .u_name {
+      font-family: Georgia;
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    .u_name_2 {
+      font-family: Sans-serif;
+      font-size: 17px;
+      font-weight: bold;
+      color: gray
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <h2 id="title">GitHub Users</h2>
+  <input type="text" id="usr" value="serhat-yurdakul" onchange="readUser()">
+  <p id="imagee"><img src="./GitHub Users_t_s_files/61788316"></p>
+  <hr>
+  <br>
+  <p id="out"><span class="u_name">serhat-yurdakul</span><br><span
+      class="u_name_2">serhat-yurdakul</span><br><br>undefined<br><a href="https://serhat-yurdakul.github.io/"
+      target="NewTab">serhat-yurdakul.github.io/</a><br>1 repos<br>1 followers<br>1 following<br></p>
+  <hr>
+  <b>Sample code</b>
+  <pre id="sample">function listRepos(b) {<br>
+          if (b.length)<br>
+          out.innerHTML +=<br>
+          b.map(x =&gt; x.name).join(", ")<br>}<br>
+          function userData(u) {<br>    if (!u || !u.login) {<br>      error(usr.value+' not found')<br>
+          return<br>    }<br>    //u.login is the same as usr.value<br>
+          out.style.color = ''<br>
+          out.innerHTML = ''<br>
+          imagee.innerHTML = ''<br>
+          let i = document.createElement("img")<br> 
+          i.src = u.avatar_url<br><br>  
+          imagee.appendChild(i)<br><br> 
+          let s = (u.name? u.name : u.login)<br> 
+          let k= "&lt;span class=\"u_name\"&gt;"+s+"&lt;/span&gt;"<br>   
+          out.innerHTML+=k+BR;<br>  
+          let s1 =u.login;<br>  
+          let k1= "&lt;span class=\"u_name_2\"&gt;"+s1+"&lt;/span&gt;"<br>   
+          out.innerHTML+=k1+BR+BR;<br>   
+          let m;<br>   
+          if(u.company) m=u.company+BR<br>   
+          if (u.location) m +=u.location<br> 
+          out.innerHTML += m+BR; console.log(m)<br>  
+          let h = u.login+".github.io/"<br>   
+          let a = document.createElement("a")<br>  
+          a.href = "https://"+h<br>  
+          a.target = "NewTab"<br>  
+          a.innerText = h<br>  
+          out.appendChild(a)<br>   
+          let p = u.public_repos+" repos"<br>   
+          out.innerHTML += BR+p+BR<br>  
+          out.innerHTML += u.followers+" followers"+BR<br>  
+          out.innerHTML += u.following+" following"+BR<br><br><br>}<br>
+          function readUser() {<br> 
+          fetch(URL+usr.value)<br> 
+          .then(r =&gt; r.ok? r.json() : null)<br>  
+          .then(userData).catch(error)<br>}</pre>
+  <hr>
+
+  <script>
+    "use strict";
+    const NL = "\n", BR = "<BR>",
+      URL = "https://api.github.com/users/"
+    function error(t) {
+      out.style.color = 'red'
+      out.innerText = t; console.log(t)
+    }
+    function listRepos(b) {
+      if (b.length)
+        out.innerHTML +=
+          b.map(x => x.name).join(", ")
+    }
+    function userData(u) {
+      if (!u || !u.login) {
+        error(usr.value + ' not found')
+        return
+      }
+      
+      out.style.color = ''
+      out.innerHTML = ''
+      imagee.innerHTML = ''
+      
+      let i = document.createElement("img")
+      i.src = u.avatar_url
+
+      imagee.appendChild(i)
+
+      
+      let s = (u.name ? u.name : u.login)
+      let k = "<span class=\"u_name\">" + s + "</span>"
+      out.innerHTML += k + BR;
+      let s1 = u.login;
+      let k1 = "<span class=\"u_name_2\">" + s1 + "</span>"
+      out.innerHTML += k1 + BR + BR;
+      let m;
+      if (u.company) m = u.company + BR
+      if (u.location) m += u.location
+      out.innerHTML += m + BR; console.log(m)
+      
+      let h = u.login + ".github.io/"
+      let a = document.createElement("a")
+      a.href = "https://" + h
+      a.target = "NewTab"
+      a.innerText = h
+      out.appendChild(a)
+      
+      let p = u.public_repos + " repos"
+      out.innerHTML += BR + p + BR
+      out.innerHTML += u.followers + " followers" + BR
+      out.innerHTML += u.following + " following" + BR
+
+
+    }
+    function readUser() {
+      fetch(URL + usr.value)
+        .then(r => r.ok ? r.json() : null)
+        .then(userData).catch(error)
+    }
+
+    title.innerText = document.title
+    sample.innerText =
+      listRepos + NL + userData + NL + readUser
+    out.innerText = "Reading data"
+    readUser()
+  </script>
+
+
+
+</body>
+
+</html>
