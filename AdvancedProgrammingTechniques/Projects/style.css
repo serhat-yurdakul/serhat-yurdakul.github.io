@@ -37,6 +37,9 @@
     width: 100%;
   }
   
+
+
+
   .game .overlay-content {
     position: absolute;
     top: 0;
@@ -90,6 +93,8 @@
     border-bottom: none;
   }
   
+
+
   .game .board-cells-list > li.cross::before,
   .game .board-cells-list > li.circle::before {
     display: flex;
@@ -130,34 +135,18 @@
     color: red;
   }
   
-  .current-turn {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 12px;
-    text-transform: uppercase;
-  }
-  
-  .game-status {
-    margin: 16px 0 8px 0;
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 12px;
-    text-transform: uppercase;
-  }
-  
-  .game-status > span {
-    color: white;
-  }
-  
+
   .game-replay {
-    margin-top: 8px;
-  }
-  
-  .game-replay > button {
     display: none;
+    margin-top: 16px;
   }
   
-  .game-replay > button.show {
-    display: inline-block;
+  .game-replay.show {
+    display: block;
   }
+  
+
+
   
   .game-replay > button {
     border: none;
