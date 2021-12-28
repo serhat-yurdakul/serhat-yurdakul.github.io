@@ -1,55 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac Toe Game</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic Tac Toe Game</title>
+  <link rel="stylesheet" href="style.css" />
 
 
 
 </head>
 <body>
-    <section class="game-page">
-        <div class="game">
-          <div class="board">
-            <img src="board.png" alt="Board" />
-          </div>
   
-          <div class="overlay-content">
-            <h1>tic tac toe</h1>
-  
-            <p class="game-status">
-              Status: <span id="gameStatus">LOADING</span>
-            </p>
-  
-            <div class="game-details">
-              <p class="current-turn">
-                <span>TURN: </span>
-                <span id="currentTurn" class="cross"></span>
-              </p>
-            </div>
-  
-            <div class="game-board">
-              <ul id="cellList" class="board-cells-list">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-              </ul>
-            </div>
-  
-           
-          </div>
-        </div>
-      </section>
+  <section class="game-page">
+    <div class="game">
+      <div class="board">
+        <img src="board.png" alt="Board" />
+      </div>
 
-    
+      <div class="overlay-content">
+        <h1>tic tac toe</h1>
+
+        <div class="game-details">
+          <p class="current-turn">
+            <span>Cureent Turn: </span>
+            <span id="currentTurn" class="circle"></span>
+          </p>
+        </div>
+
+        <div class="game-board">
+          <ul class="board-cells-list">
+            <li class="cross"></li>
+            <li class="circle"></li>
+            <li></li>
+            <li></li>
+            <li class="cross"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+
+        <div id="replayGame" class="game-replay">
+          <p>WIN!</p>
+          <button onclick="resetGame()">Replay</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="main.js"></script>
+
+
+
+
 </body>
+
 </html>
