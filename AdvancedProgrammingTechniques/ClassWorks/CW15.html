@@ -57,7 +57,7 @@
     <hr>
     <b>Sample code</b>
     <pre
-        id="sample">class Course { //implement this<br>    constructor(id,time,date,...rooms) {<br>        this.id=id<br>        this.time=time<br>        this.date=date<br>        this.rooms=rooms   <br>    }<br>    toString() {<br>        return this.id+" "+this.time+" "+this.date;<br>    }<br>    static fromString(s) {<br>        return new Course(...s.split('\t'))<br>    }<br>}<br>function readCourses() {<br>    fetch(LINK+"Courses.txt").then(r =&gt; r.text())<br>    .then(x =&gt; makeData(x,Course,crsMap))<br>    //.then( Implement this )<br>}<br>function findBest() { //the best gpa in stdMap<br>    let bestGpa = 0 <br>    for (let student of stdMap.values()){<br>        if(student.gpa &gt; bestGpa)<br>            bestGpa = student.gpa       <br>    }<br>    report(bestGpa);<br>}</pre>
+        id="sample">class Course { <br>    constructor(id,time,date,...rooms) {<br>        this.id=id<br>        this.time=time<br>        this.date=date<br>        this.rooms=rooms   <br>    }<br>    toString() {<br>        return this.id+" "+this.time+" "+this.date;<br>    }<br>    static fromString(s) {<br>        return new Course(...s.split('\t'))<br>    }<br>}<br>function readCourses() {<br>    fetch(LINK+"Courses.txt").then(r =&gt; r.text())<br>    .then(x =&gt; makeData(x,Course,crsMap))<br>    //.then( Implement this )<br>}<br>function findBest() { //the best gpa in stdMap<br>    let bestGpa = 0 <br>    for (let student of stdMap.values()){<br>        if(student.gpa &gt; bestGpa)<br>            bestGpa = student.gpa       <br>    }<br>    report(bestGpa);<br>}</pre>
     <hr>
 
     <script>
@@ -151,7 +151,7 @@
                 if (student.gpa > bestGpa)
                     bestGpa = student.gpa
             }
-            report(bestGpa);
+            report("Best Gpa: " + bestGpa);
         }
         const LINK = "https://maeyler.github.io/JS/data/"
         function readStudents() {
@@ -161,7 +161,7 @@
         function readCourses() {
             fetch(LINK + "Courses.txt").then(r => r.text())
                 .then(x => makeData(x, Course, crsMap))
-           
+            
         }
         title.innerText = document.title
         sample.innerText = Course + "\n" + readCourses + "\n" + findBest
