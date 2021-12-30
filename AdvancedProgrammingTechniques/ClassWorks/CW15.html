@@ -76,7 +76,7 @@
                 return new Student(...s.split('\t'))
             }
         }
-        class Course { //implement this
+        class Course { 
             constructor(id, time, date, ...rooms) {
                 this.id = id
                 this.time = time
@@ -161,7 +161,7 @@
         function readCourses() {
             fetch(LINK + "Courses.txt").then(r => r.text())
                 .then(x => makeData(x, Course, crsMap))
-            //.then( Implement this )
+           
         }
         title.innerText = document.title
         sample.innerText = Course + "\n" + readCourses + "\n" + findBest
